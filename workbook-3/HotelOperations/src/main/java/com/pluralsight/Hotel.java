@@ -1,7 +1,7 @@
 package com.pluralsight;
 
+
 public class Hotel {
-    public class Hotel {
         // Private instance variables
         private String name;
         private int numberOfSuites;
@@ -47,7 +47,32 @@ public class Hotel {
         public int getBookedBasicRooms() {
             return bookedBasicRooms;
         }
+        public boolean bookRoom(int numberOfRoomsToBook, boolean isSuite) {
+            if (isSuite) {
+                int available = numberOfSuites - bookedSuites;
+                if (numberOfRoomsToBook <= available) {
+                    bookedSuites += numberOfRoomsToBook;
+                    return true;
+                }
+            } else {
+                int available = numberOfRooms - bookedBasicRooms;
+                if (numberOfRoomsToBook <= available) {
+                    bookedBasicRooms += numberOfRoomsToBook;
+                    return true;
+                }
+            }
+            return false; // Not enough rooms
+        }
+
+        public int getAvailableSuites() {
+            return numberOfSuites - bookedSuites;
+        }
+        public int getAvailableRooms() {
+            return numberOfRooms - bookedBasicRooms;
+        }
+
+
     }
 
 
-}
+
