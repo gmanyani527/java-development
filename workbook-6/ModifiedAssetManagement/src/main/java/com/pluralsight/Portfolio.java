@@ -36,6 +36,17 @@ public class Portfolio {
         }
         return mostValuable;
     }
+    public Valuable getLeastValuable() {
+        if (assets.isEmpty()) return null;
+
+        Valuable leastValuable = assets.get(0);
+        for (Valuable asset : assets) {
+            if (asset.getValue() < leastValuable.getValue()) {
+                leastValuable = asset;
+            }
+        }
+        return leastValuable;
+    }
 
     // Optional: to display portfolio contents
     public void printAssets() {
