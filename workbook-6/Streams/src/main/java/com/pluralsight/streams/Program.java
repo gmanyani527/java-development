@@ -33,3 +33,37 @@ public class Program {
                 matchingPeople.add(person);
             }
         }
+        System.out.println("\nMatching people:");
+        if (matchingPeople.isEmpty()) {
+            System.out.println("No matches found.");
+        } else {
+            for (Person person : matchingPeople) {
+                System.out.println(person);
+            }
+        }
+
+        // Step 3: Calculate average, oldest, and youngest ages
+        int totalAge = 0;
+        int maxAge = Integer.MIN_VALUE;
+        int minAge = Integer.MAX_VALUE;
+
+        for (Person person : people) {
+            int age = person.getAge();
+            totalAge += age;
+
+            if (age > maxAge) {
+                maxAge = age;
+            }
+
+            if (age < minAge) {
+                minAge = age;
+            }
+        }
+
+        double averageAge = (double) totalAge / people.size();
+
+        System.out.printf("\nAverage Age: %.2f\n", averageAge);
+        System.out.println("Oldest Age: " + maxAge);
+        System.out.println("Youngest Age: " + minAge);
+    }
+}
